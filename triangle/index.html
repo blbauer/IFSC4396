@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset ="utf-8">
+    <meta name="description" content="Hypotenuse of a Right Triangle">
+    <meta name="keywords" content="JavaScript, HTML, CSS">
+    <meta name="author" content="Bruce Bauer">
+    <title>Hypotenuse of a Right Triangle</title>
+    <link rel="stylesheet" type="text/css" href="assets/style/triangle.css">
+</head>
+
+<body>
+    <form id="TriangleForm" onsubmit="return false">
+    <h2>Hypotenuse of a Right Triangle</h2>
+        <label for="leg1" class="formlabel">Enter leg1 of the triangle:</label>
+        <input type="text" id="leg1" name="leg1">
+        <label for="leg1" class="error" id="leg1error"></label>
+        <br>
+        
+        <label for="leg2" class="formlabel">Enter leg2 of the triangle:</label>
+        <input type="text" id="leg2" name="leg2">
+        <label for="leg2" class="error" id="leg2error"></label>
+        <br><br>
+
+        <label for="hypotenuse" class="formlabel">Hypotenuse:</label>
+        <span id="hypotenuse"></span>
+        <br><br>
+        <input type="submit" value="Calculate" id="btnCalc" onclick="displayHypotenuse()">
+        <input type="submit" value="Clear" id="btnClear" onclick="clearForm()">
+    </form>
+</body>
+<script src="assets/script/triangle.js"></script>
+</html>
