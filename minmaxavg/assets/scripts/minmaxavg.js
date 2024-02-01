@@ -1,19 +1,77 @@
 function calculate() {
-    
-    /* Make sure that the form is valid */
-    if ($( "#myform" ).valid()) {
-        
-        /* get the operands from the form */
-        var operand1 = document.getElementById("Operand1").value;
-        var operand2 = document.getElementById("Operand2").value;
-        var operand3 = document.getElementById("Operand3").value;
-        
-        /* convert the operands from string to floating point */
+
+    // Clear any error or output messages
+    document.getElementById("Operand1Error").innerHTML = "";
+    document.getElementById("Operand2Error").innerHTML = "";
+    document.getElementById("Operand3Error").innerHTML = "";
+    document.getElementById("OperatorError").innerHTML = "";
+    document.getElementById("Result").innerHTML = "";
+
+    // Error Flag - True if an error has occurred
+    var errorflag = false;
+
+    // Get Operand 1 from form
+    var operand1 = document.getElementById("Operand1").value;
+
+    // Operand 1 is Required
+    if (operand1 == "") {
+        document.getElementById("Operand1Error").innerHTML = "Operand 1 is Required";
+        errorflag = true;
+    }
+
+    // Operand 1 must be a floating point number
+    if (isNaN(operand1)) {
+        document.getElementById("Operand1Error").innerHTML = "Operand 1 Must be a Floating Point Number";
+        errorflag = true;
+    }
+
+    // Get Operand 2 from form
+    var operand2 = document.getElementById("Operand2").value;
+
+    // Operand 2 is Required
+    if (operand2 == "") {
+        document.getElementById("Operand2Error").innerHTML = "Operand 2 is Required";
+        errorflag = true;
+    }
+
+    // Operand 2 must be a floating point number
+    if (isNaN(operand2)) {
+        document.getElementById("Operand2Error").innerHTML = "Operand 2 Must be a Floating Point Number";
+        errorflag = true;
+    }
+
+    // Get Operand 3 from form
+    var operand3 = document.getElementById("Operand3").value;
+
+    // Operand 3 is Required
+    if (operand3 == "") {
+        document.getElementById("Operand3Error").innerHTML = "Operand 3 is Required";
+        errorflag = true;
+    }
+
+    // Operand 3 must be a floating point number
+    if (isNaN(operand3)) {
+        document.getElementById("Operand3Error").innerHTML = "Operand 3 Must be a Floating Point Number";
+        errorflag = true;
+    }
+
+    // At least one operator has to be checked
+    if (!document.getElementById("MinOperator").checked && 
+        !document.getElementById("MaxOperator").checked && 
+        !document.getElementById("AvgOperator").checked) {
+            document.getElementById("OperatorError").innerHTML = "Operator is Required";
+            errorflag = true;                
+    }
+
+    // if there is no error, perform the calculations
+    if (!errorflag) {
+
+        // convert the operands from string to floating point
         var operand1fp = parseFloat (operand1);
         var operand2fp = parseFloat (operand2);
         var operand3fp = parseFloat (operand3);
         
-        /* figure out which operator was checked and place the value in operator */
+        // figure out which operator was checked and place the value in operator
         var operator;
         if (document.getElementById("MinOperator").checked) {
             operator = document.getElementById("MinOperator").value;
@@ -25,9 +83,10 @@ function calculate() {
             operator = document.getElementById("AvgOperator").value;
         }
 
+        // Calculate the answer and put it in result
         var result;
         
-        /* if the operator was "Min" then set result to the minimum */
+        // if the operator was "Min" then set result to the minimum */
         if (operator == "Min") {
             if(operand1fp <= operand2fp && operand1fp <= operand3fp) {
                 result = operand1fp;
@@ -40,7 +99,7 @@ function calculate() {
             }
         }
  
-        /* if the operator was "Max" then set result to the maximum */
+        // if the operator was "Max" then set result to the maximum
         if (operator == "Max") {
             if(operand1fp >= operand2fp && operand1fp >= operand3fp) {
                 result = operand1fp;
@@ -53,7 +112,7 @@ function calculate() {
             }
         }
 
-        /* if operator was "Avg" the calcualute the average of 3 operands */
+        // if operator was "Avg" the calcualute the average of 3 operands
         if (operator == "Avg") {
             result = (operand1fp + operand2fp + operand3fp) / 3.0;
         }
@@ -78,8 +137,3 @@ function clearform() {
     document.getElementById("OperatorError").innerHTML = "";
     document.getElementById("Result").innerHTML = "";
 }
-
-/* Form Validation */
-$( "#myform" ).validate({
- 
-});

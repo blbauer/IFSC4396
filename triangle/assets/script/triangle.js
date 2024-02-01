@@ -5,13 +5,16 @@ function displayHypotenuse() {
     document.getElementById("leg2error").innerHTML = "";
     document.getElementById("hypotenuse").innerHTML = "";
 
-    var errorflag = false; // an error has occurred
-    var leg1; // string representation of the leg1
-    var leg1fp; // floating point value of leg1
-    var leg2; // string representation of the leg1
-    var leg2fp; // floating point value of leg1
-    var hypotenuse;  // floating point hypotenuse
-    var result; // displayable result
+    var errorflag   // True: an error has occurred: False no error
+    var leg1;       // string representation of the leg1
+    var leg1fp;     // floating point value of leg1
+    var leg2;       // string representation of the leg1
+    var leg2fp;     // floating point value of leg1
+    var hypotenuse; // floating point hypotenuse
+    var result;     // displayable result
+
+    // No Error Found
+    errorflag = false 
 
     // Read in the Leg 1 as a string
     leg1 = document.getElementById("leg1").value;
